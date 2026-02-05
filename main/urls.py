@@ -3,6 +3,7 @@ from main import views
 
 urlpatterns = [
     path('', views.landing_page, name='landing_page'),
+    path('login/', views.resume_login, name='resume_login'),
     path('resumes/', views.resume_list, name='resume_list'),
     path('resume/<int:pk>/', views.resume_detail, name='resume_detail'),
     path('resume/edit/', views.edit_resume, name='edit_resume'),

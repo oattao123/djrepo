@@ -10,6 +10,7 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/6.0/ref/settings/
 """
 
+import os
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -80,10 +81,10 @@ DATABASES = {
     },
     'postgres': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'resume_db',
-        'USER': 'postgres',
-        'PASSWORD': '1234',
-        'HOST': 'localhost', #'postgres',
+        'NAME': os.environ.get('POSTGRES_DB'), # 'resume_db'
+        'USER': os.environ.get('POSTGRES_USER'), # 'postgres',
+        'PASSWORD': 'secret', # os.environ.get('POSTGRES_PASSWORD'), # '1234',
+        'HOST': 'db', # os.environ.get('POSTGRES_HOST'), # 'db', #'postgres',
         'PORT': '5432',
     },
     'mariadb': {
@@ -97,6 +98,7 @@ DATABASES = {
 }
 
 DATABASES['default'] = DATABASES['sqlite']
+DATABASES['default'] = DATABASES['postgres']
 
 
 # Password validation

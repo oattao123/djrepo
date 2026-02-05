@@ -8,6 +8,7 @@ dependencies = [
     "django>=6.0.1",
     "faker>=40.1.2",
     "pillow>=12.1.0",
+    "psycopg-binary>=3.3.2",
 ]
 
 [dependency-groups]

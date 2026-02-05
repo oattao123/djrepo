@@ -32,12 +32,15 @@ def landing_page(request):
     updated = Resume.objects.order_by('-updated_at')[:8]
 
     return render(request, 'main/landing.html', {
-        'top_rated': top_rated,
-        'unrated': unrated,
+        'top_rated': top_rated[:9],
+        'unrated': unrated[:9],
         'recent': recent,
         'updated': updated,
         'is_search': False
     })
+
+def resume_login(request):
+    return redirect('')
 
 def resume_list(request):
     resumes = Resume.objects.annotate(average_rating=Avg('ratings__score'))
