@@ -18,3 +18,9 @@ python manage.py collectstatic --no-input
 # อัปเดตโครงสร้างฐานข้อมูล
 
 python manage.py migrate
+
+
+# Create superuser if it doesn't exist
+if [ "$DJANGO_SUPERUSER_USERNAME" ]; then
+    python manage.py createsuperuser --no-input || true
+fi
